@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-gray: #f2f2f2;
+  --color-dark-gray: #615d5d;
+  --color-red: #ff3737;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9f9f9;
+  color: var(--color-black);
+  margin: 0;
+  padding: 0;
+}
+
+.select-your-choice {
+  text-transform: uppercase;
+  font-size: xx-large;
+  font-weight: 700;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.selection {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: center;   
+  flex-direction: row;
+  padding: 0;
+  display: flex; 
+  justify-content: center; 
+}
+
+.component-parent {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f2f2f2;
+  margin: 10px 200px; 
+  border-radius: 10px; 
+}
+
+.component-child {
+  flex: 1 0 calc(25% - 20px); 
+  height: 100%; 
+  background-color: #f2f2f2; 
+  color: black;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  box-sizing: border-box; 
+  border-radius: 10px; 
+}
+.selected {
+  background-color: black;
+  color: white;
+}
+
+.frame-parent {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  margin: 10px;
+  width: calc(33.33% - 180px); 
+  
+}
+
+.frame-parent:hover {
+  transform: scale(1.05);
+}
+
+.product-image-parent {
+  position: relative;
+}
+
+.product-image-icon {
+  width: 100%;
+  height: calc(33.33% - 20px); 
+}
+
+.badgeText-wrapper {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: hsl(0, 0%, 100%);
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.product-title-parent,
+.amount,
+.cart-icon-parent {
+  padding: 10px;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.vendor {
+  color: grey;
+  font-size: 14px;
+}
+
+
+
+.add-to-cart {
+  background: black;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.product-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 20px; 
+
+}
+
+.product-title-parent {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: flex-start; /* Align items to the start */
+  padding: 10px; /* Optional padding */
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px; /* Space between title and dot */
+}
+
+.frame-item {
+  width: 10px; /* Width of the dot */
+  height: 10px; /* Height of the dot */
+  border-radius: 50%; /* Make it a circle */
+  background: #767474; /* Dot color */
+  margin: 0 5px; /* Space around the dot */
+}
+
+.amount {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space items evenly */
+  padding: 10px; /* Optional padding */
+}
+
+.price {
+  font-size: 16px;
+  font-weight: bold;
+  color: black; /* Price color */
+  margin-right: 10px; /* Space between price and offer */
+}
+
+.offer {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: gray; /* Use your defined color variable */
+  margin-right: 10px; /* Space between offer and discount */
+}
+
+.off {
+  font-size: 14px;
+  color: red; /* Discount color */
+}
