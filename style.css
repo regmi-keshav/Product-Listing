@@ -36,36 +36,57 @@ body {
 .component-parent {
   display: flex;
   flex-wrap: wrap;
-  background-color: #f2f2f2;
-  margin: 10px 200px; 
+  background-color: var(--color-gray);
+  margin: 0 200px; 
   border-radius: 10px; 
 }
 
 .component-child {
   flex: 1 0 calc(25% - 20px); 
   height: 100%; 
-  background-color: #f2f2f2; 
-  color: black;
+  background-color: var(--color-gray); 
+  color: var(--color-black);
   text-align: center;
   padding: 15px;
   cursor: pointer;
   box-sizing: border-box; 
   border-radius: 10px; 
 }
-.selected {
-  background-color: black;
-  color: white;
+
+.component-child.selected {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.fluent-emoji-high-contrastboy-wrapper,
+.fluent-emoji-high-contrastwoman-wrapper,
+.fluent-emoji-high-contrastchild-wrapper {
+  display: none; /* Hide all emoji wrappers by default */
+}
+
+.component-child.selected .fluent-emoji-high-contrastboy-wrapper,
+.component-child.selected .fluent-emoji-high-contrastwoman-wrapper,
+.component-child.selected .fluent-emoji-high-contrastchild-wrapper {
+  display: inline-block; /* Display emoji wrapper only when its parent is selected */
+  margin-right: 10px;
+}
+
+.fluent-emoji-high-contrastboy-icon,
+.fluent-emoji-high-contrastwoman-icon,
+.fluent-emoji-high-contrastchild-icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
 }
 
 .frame-parent {
-  background: white;
+  background: var(--color-white);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
   margin: 10px;
-  width: calc(33.33% - 180px); 
-  
+  width: calc(25% - 40px); /* Adjusted width for responsiveness */
 }
 
 .frame-parent:hover {
@@ -78,7 +99,7 @@ body {
 
 .product-image-icon {
   width: 100%;
-  height: calc(33.33% - 20px); 
+  height: calc(33.33% - 20px);  /* Ensure images scale proportionally */
 }
 
 .badgeText-wrapper {
@@ -101,18 +122,22 @@ body {
 .product-title {
   font-size: 16px;
   font-weight: bold;
+  white-space: nowrap; /* Prevent title from wrapping */
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 .vendor {
-  color: grey;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-dark-gray);
   font-size: 14px;
 }
 
-
-
 .add-to-cart {
-  background: black;
-  color: white;
+  background: var(--color-black);
+  color: var(--color-white);
   padding: 10px;
   text-align: center;
   cursor: pointer;
@@ -120,56 +145,88 @@ body {
   margin-top: 10px;
 }
 
+.add-to-cart:hover {
+  background: var(--color-dark-gray);
+}
+
 .product-container {
   display: flex;
   justify-content: center;
-  margin: 0 20px; 
-
+  flex-wrap: wrap; /* Ensure products wrap on smaller screens */
+  margin: 0 10px; /* Adjust margins for smaller screens */
 }
 
 .product-title-parent {
   display: flex;
-  align-items: center; /* Center items vertically */
-  justify-content: flex-start; /* Align items to the start */
-  padding: 10px; /* Optional padding */
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .product-title {
   font-size: 16px;
   font-weight: bold;
-  margin-right: 5px; /* Space between title and dot */
+  margin-right: 5px;
 }
 
 .frame-item {
-  width: 10px; /* Width of the dot */
-  height: 10px; /* Height of the dot */
-  border-radius: 50%; /* Make it a circle */
-  background: #767474; /* Dot color */
-  margin: 0 5px; /* Space around the dot */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #767474;
+  margin: 0 5px;
 }
 
 .amount {
   display: flex;
-  align-items: center; /* Center items vertically */
-  justify-content: space-between; /* Space items evenly */
-  padding: 10px; /* Optional padding */
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .price {
   font-size: 16px;
   font-weight: bold;
-  color: black; /* Price color */
-  margin-right: 10px; /* Space between price and offer */
+  color: var(--color-black);
+  margin-right: 10px;
 }
 
 .offer {
   font-size: 14px;
   text-decoration: line-through;
-  color: gray; /* Use your defined color variable */
-  margin-right: 10px; /* Space between offer and discount */
+  color: var(--color-dark-gray);
+  margin-right: 10px;
 }
 
 .off {
   font-size: 14px;
-  color: red; /* Discount color */
+  color: var(--color-red);
 }
+
+/* Media Queries for Responsiveness */
+
+@media screen and (max-width: 767px) {
+  .component-child {
+    flex: 1 0 calc(50% - 20px); /* 2 items per row */
+  }
+
+  .frame-parent {
+    width: calc(50% - 20px); /* 2 items per row */
+  }
+
+  .product-image-icon {
+    height: 300px; /* Adjust image height for smaller screens */
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .component-child {
+    flex: 1 0 calc(33.33% - 20px); /* 3 items per row */
+  }
+
+  .frame-parent {
+    width: calc(33.33% - 20px); /* 3 items per row */
+  }
+}
+
+/* Desktop screen (above 1024px) styles are already defined */

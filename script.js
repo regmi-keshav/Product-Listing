@@ -8,13 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function changeBackground(element) {
     // Reset background color for all items and set text color to black
     buttons.forEach((button) => {
-      button.style.backgroundColor = "#f2f2f2";
-      button.style.color = "black";
+      button.classList.remove("selected");
     });
 
     // Set background color to black for the clicked item and white text color
-    element.style.backgroundColor = "black";
-    element.style.color = "white";
+    element.classList.add("selected");
   }
 
   function fetchAndDisplayProducts(categoryName) {
@@ -39,26 +37,36 @@ document.addEventListener("DOMContentLoaded", () => {
               productDiv.className = "frame-parent";
 
               productDiv.innerHTML = `
-                                <div class="product-image-parent">
-                                    <img class="product-image-icon" loading="lazy" alt="" src="${product.image}" />
-                                    <div class="badgeText-wrapper">
-                                        <div class="badgeText">${product.badge_text}</div>
-                                    </div>
-                                </div>
-                                <div class="product-title-parent">
-                                    <div class="product-title">${product.title}</div>
-                                    <div class="frame-item">. </div>
-                                    <div class="vendor">${product.vendor}</div>
-                                </div>
-                                <div class="amount">
-                                    <div class="price">Rs ${product.price}</div>
-                                    <div class="offer">Rs ${product.compare_at_price}</div>
-                                    <div class="off">${discount}% Off</div>
-                                </div>
-                                <div class="cart-icon-parent">
-                                    <div class="add-to-cart">Add to Cart</div>
-                                </div>
-                            `;
+                <div class="product-image-parent">
+                  <img class="product-image-icon" loading="lazy" alt="" src="${
+                    product.image
+                  }" />
+                     ${
+                       product.badge_text
+                         ? `
+                    <div class="badgeText-wrapper">
+                      <div class="badgeText">${product.badge_text}</div>
+                    </div>
+                  `
+                         : ""
+                     }
+                </div>
+                <div class="product-title-parent">
+                  <div class="product-title">${product.title}</div>
+                  
+                  <div class="vendor"><div class="frame-item"></div><div>${
+                    product.vendor
+                  }</div></div>
+                </div>
+                <div class="amount">
+                  <div class="price">Rs ${product.price}</div>
+                  <div class="offer">Rs ${product.compare_at_price}</div>
+                  <div class="off">${discount}% Off</div>
+                </div>
+                <div class="cart-icon-parent">
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              `;
 
               // Add click event listener to the "Add to Cart" button
               productDiv
